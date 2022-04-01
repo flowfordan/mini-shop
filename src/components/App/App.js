@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import withBookstoreService from "../HOC/withBookstoreService";
 import styles from './App.module.css';
 
-function App() {
+function App({bookstoreService}) {
 
   const [count, setCount] = useState(0)
 
+  console.log(bookstoreService.getBooks())
 
   return (
     <div>
@@ -23,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default withBookstoreService()(App) ;
