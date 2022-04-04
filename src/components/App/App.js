@@ -8,30 +8,32 @@ import CartPage from "../Pages/CartPage";
 
 function App() {
 
-  const [count, setCount] = useState(0)
-
-  
+  //header
 
   return (
+    
+    <div className={styles.wrapper}>
+    <header className={styles.header}>
+      Header
+    </header>
+    
+    <body className={styles.body}>
     <Routes>
-    {/* <div>
-          Zdarova
 
-          <div>
-          <button
-          onClick={() => {setCount(count + 1)}}>+</button>
-          <button
-          onClick={() => {setCount(count - 1)}}>-</button>
-          </div>
-          <div>{count}</div>
-
-        </div> */}
-
+      
+    
       <Route path="*" element={<HomePage />}/>
       <Route path="/card" element={<CartPage />}/>
     
-
     </Routes>
+    </body>
+
+    <footer className={styles.footer}>
+      Footer
+    </footer>
+
+    </div>
+    
     
   );
 }

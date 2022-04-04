@@ -1,0 +1,18 @@
+.layout {
+    display: grid;
+    grid-template-columns: auto 1200px 400px auto;
+    column-gap: 20px;
+    grid-template-areas: 
+    ". books cart .";
+
+}
+
+.books {
+    grid-area: books;
+    background-color: aquamarine;
+}
+
+.cart {
+    grid-area: cart;
+    background-color: aquamarine;
+}

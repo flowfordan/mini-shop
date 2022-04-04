@@ -3,7 +3,7 @@ import * as ReactDOMClient from 'react-dom/client';
 import { BookstoreServiceProvider } from './components/BookstoreServiceContext/BooksServiceContext';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App/App';
-import './index.css';
+import './styles/globals.css';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import BookstoreService from './services/bookstoreService';
 
