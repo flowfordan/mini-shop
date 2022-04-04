@@ -1,0 +1,54 @@
+.book {
+    display: grid;
+    grid-template-columns: 200px auto 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+    "cover title title"
+    "cover author author"
+    "cover about about"   
+    "cover price addBtn";
+    margin: 30px;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+.cover {
+    grid-area: cover;
+    background-color: var(--primary);
+    min-height: 240px;
+}
+
+.title {
+    grid-area: title;
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.author {
+    grid-area: author;
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.about {
+    grid-area: about;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.price {
+    grid-area: price;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+}
+
+.addBtn {
+    grid-area: addBtn;
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 600;
+
+}
+

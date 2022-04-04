@@ -5,6 +5,8 @@ import withBookstoreService from "../HOC/withBookstoreService";
 import styles from './App.module.css';
 import HomePage from "../Pages/HomePage";
 import CartPage from "../Pages/CartPage";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function App() {
 
@@ -13,24 +15,18 @@ function App() {
   return (
     
     <div className={styles.wrapper}>
-    <header className={styles.header}>
-      Header
-    </header>
-    
+    <Header className={styles.header} />
+
     <body className={styles.body}>
     <Routes>
 
-      
-    
       <Route path="*" element={<HomePage />}/>
       <Route path="/card" element={<CartPage />}/>
     
     </Routes>
     </body>
 
-    <footer className={styles.footer}>
-      Footer
-    </footer>
+    <Footer className={styles.footer} />
 
     </div>
     

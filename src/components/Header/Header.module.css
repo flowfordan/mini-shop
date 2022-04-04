@@ -1,0 +1,32 @@
+.header {
+    display: grid;
+    background-color: var(--primary);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+    "logo cartInfo .";
+    column-gap: 20px;
+}
+
+.logo {
+    grid-area: logo;
+}
+
+.cartInfo {
+    grid-area: cartInfo;
+}
+
+@media (max-width: 765px) {
+
+    .cartInfo {
+        visibility: hidden;
+    }
+    
+    .header {
+        grid-template-columns: minmax(320px, 1fr);
+        grid-template-areas: 
+        "logo";
+    }
+
+    
+}
