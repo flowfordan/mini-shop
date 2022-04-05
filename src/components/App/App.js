@@ -17,14 +17,14 @@ function App() {
     <div className={styles.wrapper}>
     <Header className={styles.header} />
 
-    <body className={styles.body}>
-    <Routes>
+    <div className={styles.body}>
+      <Routes>
 
-      <Route path="*" element={<HomePage />}/>
-      <Route path="/card" element={<CartPage />}/>
-    
-    </Routes>
-    </body>
+        <Route path="*" element={<HomePage />}/>
+        <Route path="/card" element={<CartPage />}/>
+      
+      </Routes>
+    </div>
 
     <Footer className={styles.footer} />
 

@@ -6,23 +6,29 @@ import withBookstoreService from "../HOC/withBookstoreService";
 import { booksLoaded } from "../../actions/actions";
 import { bindActionCreators } from "redux";
 import compose from "../../utils/compose";
+import Spinner from "../Spinner/Spinner";
 
 const BookList = (props) => {
     
 
     useEffect(
         () => {
-          // get data
-          const {bookstoreService} = props;
-          const data = bookstoreService.getBooks();
-          console.log(data)
+          const {bookstoreService, booksLoaded} = props;
+          bookstoreService.getBooks().then((data) => {
+              booksLoaded(data)
+          });
+          
 
           // dispatch action
-          props.booksLoaded(data)
+          
         },
         [])
 
-    const {books} = props
+
+    const {books, isLoading} = props
+    if(isLoading){
+        return <Spinner />
+    }
 
     return(
         <>
@@ -41,7 +47,8 @@ const BookList = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        books: state.books
+        books: state.books,
+        isLoading: state.isLoading
     }
 };
 

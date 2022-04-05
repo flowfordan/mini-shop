@@ -1,7 +1,8 @@
 
 
 const initState = {
-    books: []
+    books: [],
+    isLoading: true,
 };
 
 const reducer = (state = initState, action) => {
@@ -9,7 +10,8 @@ const reducer = (state = initState, action) => {
     switch(action.type) {
         case 'BOOKS_LOADED':
             return {
-                books: action.payload
+                books: action.payload,
+                isLoading: false
             }
 
         default:
