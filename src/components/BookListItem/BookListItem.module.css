@@ -10,6 +10,8 @@
     margin: 30px;
     column-gap: 20px;
     row-gap: 10px;
+    border-bottom: 3px solid;
+    padding-bottom: 10px;
 }
 
 .cover {
@@ -20,8 +22,8 @@
 
 .title {
     grid-area: title;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 26px;
+    line-height: 30px;
     font-weight: 700;
 }
 
@@ -46,9 +48,26 @@
 
 .addBtn {
     grid-area: addBtn;
-    font-size: 30px;
-    line-height: 36px;
-    font-weight: 600;
-
+    
+    
 }
 
+button {
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 26px;
+    color: var(--white);    
+}
+
+@media (max-width: 765px) {
+    .book {
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: auto auto 1fr auto auto;
+        grid-template-areas:
+        "cover title"
+        "cover author"
+        "cover about"   
+        "cover price"
+        "cover  addBtn";
+    }
+}

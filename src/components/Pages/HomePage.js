@@ -11,7 +11,7 @@ const HomePage = () => {
         <div className={styles.layout}>
             
             <div className={styles.books}>
-            <BookList/>
+                <BookList/>
             </div>
             
             
