@@ -3,11 +3,14 @@ import styles from './BookListItem.module.css'
 
 const BookListItem = ({book}) => {
     
-    const {title, author} = book
+    const {title, author, price, coverImage} = book
 
     return(
         <div className={styles.book}>
-            <div className={styles.cover}>Cover</div>
+            <div className={styles.cover}>
+                {/* center img and make blur background */}
+                <img alt= 'cover' src={coverImage}/>
+            </div>
 
             <div className={styles.title}>
                 {title}
@@ -19,7 +22,7 @@ const BookListItem = ({book}) => {
 
             <div className={styles.discript}>About</div>
 
-            <div className={styles.price}>45$</div>
+            <div className={styles.price}>{`${price}$`}</div>
 
             <div className={styles.addBtn}>
                 <button>Add to cart</button>    

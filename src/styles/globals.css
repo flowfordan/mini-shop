@@ -35,10 +35,11 @@ button {
 :root {
 	--black: #2F4858;
 	--grey-light:#EBEBEB;
+	--grey-main:#989FB4;
 	--white: white;
 	--primary: #E5FF80;
 	--primary-hover: #D4EC78;
-	--red: #FC836D;
+	--secondary: #FFD07C;
 	--green: #E5FF80;
 	--green-light: #C8F8E4;
 	--font-family: 'Noto Sans KR', sans-serif;
