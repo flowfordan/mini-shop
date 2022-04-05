@@ -3,31 +3,40 @@ import BookListItem from "../BookListItem/BookListItem";
 import styles from './BookList.module.css';
 import { connect } from "react-redux";
 import withBookstoreService from "../HOC/withBookstoreService";
-import { booksLoaded } from "../../actions/actions";
+import { booksLoaded, booksRequested, booksError } from "../../actions/actions";
 import { bindActionCreators } from "redux";
 import compose from "../../utils/compose";
 import Spinner from "../Spinner/Spinner";
+import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
+
 
 const BookList = (props) => {
     
 
     useEffect(
         () => {
-          const {bookstoreService, booksLoaded} = props;
-          bookstoreService.getBooks().then((data) => {
+          const {
+            bookstoreService, 
+            booksLoaded, 
+            booksRequested, 
+            booksError} = props;
+          booksRequested()
+          bookstoreService.getBooks()
+          .then((data) => {
               booksLoaded(data)
-          });
-          
-
-          // dispatch action
-          
+          })
+          .catch((err) => booksError(err));
         },
         [])
 
 
-    const {books, isLoading} = props
+    const {books, isLoading, error} = props
     if(isLoading){
         return <Spinner />
+    }
+
+    if(error){
+        return <ErrorIndicator />
     }
 
     return(
@@ -45,16 +54,17 @@ const BookList = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({books, isLoading, error}) => {
     return {
-        books: state.books,
-        isLoading: state.isLoading
+        books: books,
+        isLoading: isLoading,
+        error: error
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        booksLoaded
+        booksLoaded, booksRequested, booksError
     }, dispatch)
 }
 
