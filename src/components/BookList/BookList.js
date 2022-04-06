@@ -4,7 +4,6 @@ import styles from './BookList.module.css';
 import { connect } from "react-redux";
 import withBookstoreService from "../HOC/withBookstoreService";
 import { booksLoaded, booksRequested, booksError } from "../../actions/actions";
-import { bindActionCreators } from "redux";
 import compose from "../../utils/compose";
 import Spinner from "../Spinner/Spinner";
 import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
@@ -14,23 +13,12 @@ const BookList = (props) => {
     
 
     useEffect(
-        () => {
-          const {
-            bookstoreService, 
-            booksLoaded, 
-            booksRequested, 
-            booksError} = props;
-          booksRequested()
-          bookstoreService.getBooks()
-          .then((data) => {
-              booksLoaded(data)
-          })
-          .catch((err) => booksError(err));
-        },
+        () => props.fetchBooks(),
         [])
 
 
-    const {books, isLoading, error} = props
+    const {books, isLoading, error} = props;
+
     if(isLoading){
         return <Spinner />
     }
@@ -62,10 +50,17 @@ const mapStateToProps = ({books, isLoading, error}) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({
-        booksLoaded, booksRequested, booksError
-    }, dispatch)
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const {bookstoreService} = ownProps
+
+    return {
+         fetchBooks: () => {
+             dispatch(booksRequested());
+             bookstoreService.getBooks()
+             .then((data) => dispatch(booksLoaded(data)))
+             .catch((err) => dispatch(booksError(err)))
+            }
+    }
 }
 
 
