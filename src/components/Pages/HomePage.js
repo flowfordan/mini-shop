@@ -1,7 +1,8 @@
 import React from "react";
-import BookList from "../BookList/BookList";
+import BookListContainer from "../BookList/BookListContainer";
 import styles from './HomePage.module.css';
 import { connect } from "react-redux";
+import Cart from "../Cart/Cart";
 
 const HomePage = () => {
 
@@ -11,12 +12,12 @@ const HomePage = () => {
         <div className={styles.layout}>
             
             <div className={styles.books}>
-                <BookList/>
+                <BookListContainer/>
             </div>
             
             
             <div className={styles.cart}>
-                Cart
+                <Cart />
             </div>
         </div>
     )

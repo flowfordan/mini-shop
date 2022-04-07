@@ -9,24 +9,7 @@ import Spinner from "../Spinner/Spinner";
 import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
 
 
-const BookList = (props) => {
-    
-
-    useEffect(
-        () => props.fetchBooks(),
-        [])
-
-
-    const {books, isLoading, error} = props;
-
-    if(isLoading){
-        return <Spinner />
-    }
-
-    if(error){
-        return <ErrorIndicator />
-    }
-
+const BookList = ({books}) => {
     return(
         <>
         <ul>
@@ -40,6 +23,29 @@ const BookList = (props) => {
         </ul>
         </>
     )
+} 
+
+
+
+const BookListContainer = (props) => {
+    
+
+    useEffect(
+        () => props.fetchBooks(),
+        [])
+
+    const {books, isLoading, error} = props;
+
+    if(isLoading){
+        return <Spinner />
+    }
+
+    if(error){
+        return <ErrorIndicator />
+    }
+
+    return <BookList books={books}/>
+    
 }
 
 const mapStateToProps = ({books, isLoading, error}) => {
@@ -61,5 +67,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default compose (
     withBookstoreService(),
     connect (mapStateToProps, mapDispatchToProps)
-)(BookList)
+)(BookListContainer)
 ;
+
+
+

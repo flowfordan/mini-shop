@@ -1,0 +1,36 @@
+.cart {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "number title button1 quantity button2 remove price";
+    column-gap: 10px;
+}
+
+
+.number {
+    grid-area: number;
+}
+
+.title {
+    grid-area: title;
+}
+
+.button1 {
+    grid-area: button1;
+}
+
+.button2 {
+    grid-area: button2;
+}
+
+.quantity {
+    grid-area: quantity;
+}
+
+.price {
+    grid-area: price;
+}
+
+.remove {
+    grid-area: remove;
+}
