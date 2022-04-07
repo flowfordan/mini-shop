@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './BookListItem.module.css'
 
-const BookListItem = ({book}) => {
+const BookListItem = ({book, onAddedToCart}) => {
     
     const {title, author, price, coverImage} = book
 
@@ -25,7 +25,7 @@ const BookListItem = ({book}) => {
             <div className={styles.price}>{`${price}$`}</div>
 
             <div className={styles.addBtn}>
-                <button>Add to cart</button>    
+                <button onClick={onAddedToCart}>Add to cart</button>    
             </div>
         </div>
     )

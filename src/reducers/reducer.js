@@ -23,6 +23,9 @@ const initState = {
 
 const reducer = (state = initState, action) => {
 
+    
+
+
     switch(action.type) {
 
         case 'FETCH_BOOKS_REQUEST':
@@ -46,6 +49,16 @@ const reducer = (state = initState, action) => {
                 books: [],
                 isLoading: false,
                 error: action.payload
+            }
+
+        case 'BOOK_ADDED_TO_CART':
+
+            const bookId = action.payload;
+            
+            return {
+                ...state,
+                isLoading: true,
+                error: null
             }
 
         default:
