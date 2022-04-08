@@ -1,39 +1,15 @@
 import React, { useEffect } from "react";
-import BookListItem from "../BookListItem/BookListItem";
-import styles from './BookList.module.css';
 import { connect } from "react-redux";
 import withBookstoreService from "../HOC/withBookstoreService";
 import { fetchBooks, bookAddedToCart } from "../../actions/actions";
 import compose from "../../utils/compose";
 import Spinner from "../Spinner/Spinner";
 import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
-
-
-const BookList = ({books, onAddedToCart}) => {
-    return(
-        <>
-        <ul>
-            {
-                books.map((book) => {
-                    return (
-                        <li key={book.id}>
-                            <BookListItem 
-                            book={book}
-                            onAddedToCart={() => onAddedToCart(book.id)}/>
-                        </li>
-                    )
-                })
-            }
-        </ul>
-        </>
-    )
-} 
-
+import BookList from './BookList'
 
 
 const BookListContainer = (props) => {
     
-
     useEffect(
         () => props.fetchBooks(),
         [])
@@ -72,8 +48,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default compose (
     withBookstoreService(),
     connect (mapStateToProps, mapDispatchToProps)
-)(BookListContainer)
-;
+)(BookListContainer);
 
 
 

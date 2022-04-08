@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-areas: 
-    "number title button1 quantity button2 remove price";
+    "number title price button1 quantity button2 remove total";
     column-gap: 10px;
 }
 
@@ -29,6 +29,10 @@
 
 .price {
     grid-area: price;
+}
+
+.total {
+    grid-area: total;
 }
 
 .remove {

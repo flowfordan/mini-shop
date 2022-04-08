@@ -1,23 +1,25 @@
 import React from "react";
+import { bookAddedToCart } from "../../actions/actions";
 
 import styles from './Cart.module.css';
 import { connect } from "react-redux";
 
-const Cart = ({items, total, onIncrease, onDecrease, onDelete}) => {
+const Cart = ({items, total, onIncrease, onDecrease, onDelete, onAddedToCart}) => {
 
     const itemsList = items.map((item, idx) => {
 
-        const {id, title, count, total} = item
+        const {id, title, count, total, price} = item
 
         return (
             <li key={id} className={styles.cart}>
                 <span className={styles.number}>{idx + 1}</span>
                 <span className={styles.title}>{title}</span>
+                <span className={styles.price}>{`${price}$`}</span>
                 <span className={styles.quantity}>{count}</span>
-                <span className={styles.button1}><button onClick={() => onIncrease(id)}>+</button></span>
+                <span className={styles.button1}><button onClick={() => onAddedToCart(id)}>+</button></span>
                 <span className={styles.button2}><button onClick={() => onDecrease(id)}>-</button></span>
                 <span className={styles.remove}><button onClick={() => onDelete(id)}>Delete</button></span>
-                <span className={styles.price}>{`${total}$`}</span>
+                <span className={styles.total}>{`${total}$`}</span>
             </li>
         )
     })
@@ -40,11 +42,12 @@ const mapStateToProps = ({cartItems, orderTotal}) => {
     
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
         onIncrease: (id) => {
             console.log(`INC ${id}`)
         },
+        onAddedToCart: (id) => dispatch(bookAddedToCart(id)),
         onDecrease: (id) => {
             console.log(`DEC ${id}`)
         },
