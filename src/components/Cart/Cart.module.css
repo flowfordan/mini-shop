@@ -4,6 +4,7 @@
     grid-template-areas: 
     "number title price button1 quantity button2 remove total";
     column-gap: 10px;
+    margin: 30px;
 }
 
 

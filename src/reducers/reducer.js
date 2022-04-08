@@ -91,7 +91,45 @@ const reducer = (state = initState, action) => {
                     cartItems: cart,
                     orderTotal: newOrderTotal
                 }
-            }          
+            }
+            
+        case 'BOOK_REMOVED_FROM_CART':
+            const book = action.payload[0];
+            const type = action.payload[1];
+            
+            const idxR = state.cartItems.findIndex(i => i.id === book);
+            const currentCount = state.cartItems[idxR].count;
+            
+            let initCart = [...state.cartItems]
+            let newCart = initCart
+            let newOrderTotal
+            const item = initCart[idxR]
+            
+            if(type === 'del' || currentCount === 1){
+                //delete from cart
+                newCart = [
+                    ...initCart.slice(0, idxR),
+                    ...initCart.slice(idxR + 1)]
+
+                newOrderTotal = state.orderTotal - item.total
+            } else {
+                //change count and total
+                
+                const updItem = {...item, count: item.count - 1, total: item.total - item.price}
+                newCart[idxR] = updItem
+                newOrderTotal = state.orderTotal - item.price
+            }
+
+            
+
+            console.log('removed', type)
+            return {
+                ...state,
+                isLoading: false,
+                error: null,
+                cartItems: newCart,
+                orderTotal: newOrderTotal
+            }
 
         default:
             return state
