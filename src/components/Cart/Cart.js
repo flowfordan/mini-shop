@@ -11,26 +11,46 @@ const Cart = ({items, total, onDecrease, onDelete, onAddedToCart, onRemovedfromC
         const {id, title, count, total, price} = item
 
         return (
-            <li key={id} className={styles.cart}>
-                <span className={styles.number}>{idx + 1}</span>
-                <span className={styles.title}>{title}</span>
-                <span className={styles.price}>{`${price}$`}</span>
-                <span className={styles.quantity}>{count}</span>
-                <span className={styles.button1}><button onClick={() => onAddedToCart(id)}>+</button></span>
-                <span className={styles.button2}><button onClick={() => onRemovedfromCart(id, 'dec')}>-</button></span>
-                <span className={styles.remove}><button onClick={() => onRemovedfromCart(id, 'del')}>Delete</button></span>
-                <span className={styles.total}>{`${total}$`}</span>
-            </li>
+
+            <tr key={id} className={styles.booksRow}>
+                <td className={styles.number}>{idx + 1}</td>
+                <td>{title}</td>
+                <td>{`${price}$`}</td>
+                <td className={styles.quant}>
+                    <button onClick={() => onRemovedfromCart(id, 'dec')}>-</button>
+                    {count}
+                    <button onClick={() => onAddedToCart(id)}>+</button>
+                </td>
+                <td><button onClick={() => onRemovedfromCart(id, 'del')}>Del</button></td>
+                <td>{`${total}$`}</td>
+            </tr>
+
         )
     })
 
     return(
-        <>
-        <ul >
-            {itemsList}
-        </ul>
-        <div>{total}</div>
-        </>
+        <div className={styles.cart}>
+            <div className={styles.title}>Cart</div>
+            <table>
+                <tr className={styles.head}>
+                    <th>N</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Quant.</th>
+                    <th></th>
+                    <th>Total</th>
+                </tr>
+                {itemsList}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className={styles.total}>{`${total}$`}</td>
+                </tr>
+            </table>
+        </div>
     )
 }
 

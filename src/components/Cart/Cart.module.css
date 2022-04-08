@@ -1,41 +1,58 @@
 .cart {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: 
-    "number title price button1 quantity button2 remove total";
-    column-gap: 10px;
     margin: 30px;
+    
 }
 
+.cart table {
+    width: 100%;
+    text-align:justify;
+}
+
+.cart button {
+    max-width:fit-content;
+    font-size: 8;
+    background-color: var(--grey-light);
+    color: var(--grey-main);
+}
+
+.cart button:hover {
+    background-color: var(--grey-light);
+    color: var(--white);
+}
+
+.booksRow {
+
+}
+
+.head {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--grey-dark)
+}
+
+.quant{
+    grid-area: quant;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
 
 .number {
-    grid-area: number;
+    color: var(--grey-main);
 }
 
 .title {
-    grid-area: title;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 700;
 }
 
-.button1 {
-    grid-area: button1;
-}
-
-.button2 {
-    grid-area: button2;
-}
-
-.quantity {
-    grid-area: quantity;
-}
-
-.price {
-    grid-area: price;
+.buttonR {
+    background-color: var(--grey-main);
 }
 
 .total {
-    grid-area: total;
+    font-weight: 700;
+    font-size: 20px;
 }
 
-.remove {
-    grid-area: remove;
-}

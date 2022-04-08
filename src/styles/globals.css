@@ -4,7 +4,6 @@ body {
 	padding: 0;
 	color: var(--black);
 	background: #F5F6F8;
-
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -28,7 +27,8 @@ ul {
 :root {
 	--black: #2F4858;
 	--grey-light:#EBEBEB;
-	--grey-main:#989FB4;
+	--grey-main:#bac1da;
+	--grey-dark:#888da0;
 	--white: white;
 	--primary: #E5FF80;
 	--primary-hover: #D4EC78;

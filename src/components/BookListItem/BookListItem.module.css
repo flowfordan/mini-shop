@@ -12,6 +12,11 @@
     row-gap: 10px;
     border-bottom: 1px solid var(--grey-main);
     padding-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.book:hover {
+    border-left: 10px solid var(--primary)
 }
 
 
@@ -32,27 +37,27 @@
 
 .title {
     grid-area: title;
-    font-size: 26px;
-    line-height: 30px;
+    font-size: 24px;
+    line-height: 26px;
     font-weight: 700;
 }
 
 .author {
     grid-area: author;
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .about {
     grid-area: about;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 .price {
     grid-area: price;
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 30px;
+    line-height: 36px;
     font-weight: 700;
 }
 
