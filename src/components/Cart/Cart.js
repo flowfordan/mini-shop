@@ -4,7 +4,7 @@ import { bookAddedToCart, bookRemovedfromCart } from "../../actions/actions";
 import styles from './Cart.module.css';
 import { connect } from "react-redux";
 
-const Cart = ({items, total, onDecrease, onDelete, onAddedToCart, onRemovedfromCart}) => {
+const Cart = ({items, total, onAddedToCart, onRemovedfromCart}) => {
 
     const itemsList = items.map((item, idx) => {
 
@@ -64,15 +64,8 @@ const mapStateToProps = ({cartItems, orderTotal}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
         onAddedToCart: (id) => dispatch(bookAddedToCart(id)),
-        onDecrease: (id) => {
-            console.log(`DEC ${id}`)
-        },
         onRemovedfromCart: (id, type) => dispatch(bookRemovedfromCart(id, type)),
-        onDelete: (id) => {
-            console.log(`DEL ${id}`)
-        }
     }
 }
 

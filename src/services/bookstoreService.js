@@ -1,7 +1,7 @@
 export default class BookstoreService {
     
     data = [{
-            id: 1,
+            id: 10,
             title: 'V chem moya vera',
             author: 'L.N. Tolstoy',
             price: 45,
@@ -19,8 +19,8 @@ export default class BookstoreService {
             price: 32,
             coverImage: 'https://s1.livelib.ru/boocover/1000005935/200/e9f3/boocover.jpg'},
         {
-            id: 4,
-            title: 'V chem moya vera',
+            id: 1,
+            title: 'What I believe',
             author: 'L.N. Tolstoy',
             price: 24,
             coverImage: 'https://s1.livelib.ru/boocover/1000005935/200/e9f3/boocover.jpg'},
