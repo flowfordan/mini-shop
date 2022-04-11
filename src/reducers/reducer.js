@@ -5,28 +5,43 @@ const initState = {
     isLoading: true,
     error: null,
     cartItems: [
-        {
-            id: 1,
-            title: 'Privet zemlyak',
-            price: 10,
-            count: 2,
-            total: 20
-        },
-        {
-            id: 2,
-            title: 'Nezemlyak',
-            price: 15,
-            count: 3,
-            total: 45,
-        }
+
     ],
-    orderTotal: 65
+    orderTotal: 0
 };
 
-const reducer = (state = initState, action) => {
+const updCartItems = (cartItems, item, idx) => {
+    if(idx === -1){
+        return [
+            ...cartItems,
+            item
+        ]
+    }
+    return [
+        ...cartItems.slice(0, idx),
+        item,
+        ...cartItems.slice(idx + 1)
+    ]
+}
 
+
+const updCartItem = (book, cartItem) => {
     
+    if(cartItem){
+        return {
+            ...cartItem, 
+            count: cartItem.count + 1, 
+            total: cartItem.total + cartItem.price} 
+    }
+    else {
+        const {id, title, price} = book
+        return {id, title, price, count: 1, total: price}
+    }
 
+}
+
+
+const reducer = (state = initState, action) => {
 
     switch(action.type) {
 
@@ -56,36 +71,19 @@ const reducer = (state = initState, action) => {
         case 'BOOK_ADDED_TO_CART':
 
             const bookId = action.payload;
+            const bookToAdd = state.books.find(i => i.id === bookId)
             const idx = state.cartItems.findIndex(i => i.id === bookId);
+            const cartItem = state.cartItems[idx]
             let newItem;
-            let incCart;
-            let incOrderTotal;
 
-            if(idx > -1){
-                const cart = [...state.cartItems];
-                const item = cart[idx]
-                newItem = {...item, count: item.count + 1, total: item.total + item.price}
-                incCart = [
-                    ...state.cartItems.slice(0, idx),
-                    newItem,
-                    ...state.cartItems.slice(idx + 1)
-                ];
-                incOrderTotal = state.orderTotal + item.price;
-            }
-            else {
-                const bookToAdd = state.books.find(i => i.id === bookId)
-                const {id, title, price} = bookToAdd
-                newItem = {id, title, price, count: 1, total: price}
-                incCart = [...state.cartItems, newItem];
-                incOrderTotal = state.orderTotal + price
-            }
+            newItem = updCartItem(bookToAdd, cartItem)
 
             return {
                 ...state,
                 isLoading: false,
                 error: null,
-                cartItems: incCart,
-                orderTotal: incOrderTotal
+                cartItems: updCartItems(state.cartItems, newItem, idx),
+                orderTotal: state.orderTotal + bookToAdd.price
             }
             
         case 'BOOK_REMOVED_FROM_CART':
