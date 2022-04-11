@@ -10,6 +10,8 @@ import BookList from './BookList'
 
 const BookListContainer = (props) => {
     
+    console.log(props)
+
     useEffect(
         () => props.fetchBooks(),
         [])
@@ -28,7 +30,7 @@ const BookListContainer = (props) => {
     
 }
 
-const mapStateToProps = ({books, isLoading, error}) => {
+const mapStateToProps = ( {stock: { books, isLoading, error}}) => {
     return {
         books: books,
         isLoading: isLoading,

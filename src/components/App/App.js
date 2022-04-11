@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import withBookstoreService from "../HOC/withBookstoreService";
 import styles from './App.module.css';
@@ -9,8 +8,6 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 function App() {
-
-  //header
 
   return (
     
