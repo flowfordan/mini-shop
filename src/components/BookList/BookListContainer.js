@@ -13,13 +13,13 @@ const BookListContainer = (props) => {
     
     const {books, isLoading, error, onAddedToCart, totalBooksCount, itemsPerPage} = props;
     
-    const {page}  = useParams(); //getting current url for default state
+    const {pageNum}  = useParams(); //getting current url for default state
+    const page = parseInt(pageNum)
 
     const [currentPage, setPage] = useState(page);
     const [gotStatTotal, setStatTotal] = useState(false);
     const [perPageCount, setPerPageCount] = useState(2);
     const [booksCount, setCount] = useState(0);
-    const [currentBooks, setCurrentBooks] = useState([])
 
     const pageChange = (page) => {
         setPage(page)
@@ -62,7 +62,8 @@ const BookListContainer = (props) => {
 
     return <BookList books={books} onAddedToCart={onAddedToCart} 
     totalBooksCount={booksCount} pageChange={pageChange}
-    itemsPerPage={perPageCount} isLoading={isLoading}/>
+    itemsPerPage={perPageCount} isLoading={isLoading}
+    currentPage={currentPage}/>
     
 }
 

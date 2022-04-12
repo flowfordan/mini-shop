@@ -6,7 +6,7 @@ import Spinner from "../Spinner/Spinner";
 import styles from './BookList.module.css';
 
 
-const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPage, isLoading}) => {
+const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPage, isLoading, currentPage}) => {
 
     let pagesCount
     let pagesCountArray
@@ -21,8 +21,11 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
     
 
     const onPageChange = (num) => {
+        if(num<1){
+            return
+        }
         pageChange(num)
-    }
+    };
 
     const pagesLinks = pagesCountArray.map((num) => {
         return(
@@ -44,6 +47,24 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
         )
     })
 
+    const paginator = (
+        <>
+            <span className={styles.pageNum}>
+                        <Link to={`/page/${currentPage - 1}`} onClick={() => onPageChange(currentPage - 1)}>
+                            {`<`}
+                        </Link>  
+                    </span>
+
+                    {pagesLinks}
+
+                    <span className={styles.pageNum}>
+                        <Link to={`/page/${currentPage + 1}`} onClick={() => onPageChange(currentPage + 1)}>
+                            {`>`}
+                        </Link>
+                    </span>
+        </>
+    )
+
 
 
     const spinnerLoader = isLoading? <Spinner /> : null;
@@ -53,16 +74,18 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
         <>
             <div className={styles.listHeader}>
                 <span className={styles.title}>Books</span>
-                <span className={styles.pages}>{pagesLinks}</span>
-                
+                <span className={styles.pages}>
+                    {paginator}
+                </span>
             </div>
+
             {spinnerLoader}
-            {dataLoaded}
-            
-            
+            {dataLoaded}           
 
             <div className={styles.listFooter}>
-                <span className={styles.pages}>{pagesLinks}</span>
+                <span className={styles.pages}>
+                    {paginator}
+                </span>
             </div>
         </>
     )
