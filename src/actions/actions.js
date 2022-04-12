@@ -1,7 +1,7 @@
-const booksLoaded = ([newBooks, totalBooks]) => {
+const booksLoaded = ([newBooks, totalBooks, itemsPerPage]) => {
     return {
         type: 'FETCH_BOOKS_SUCCESS',
-        payload: [newBooks, totalBooks]
+        payload: [newBooks, totalBooks, itemsPerPage]
     }
 };
 
@@ -33,9 +33,9 @@ const bookRemovedfromCart = (bookId, type) => {
 }
 
 
-const fetchBooks = (bookstoreService, dispatch) => () => {
+const fetchBooks = (bookstoreService, dispatch) => (currentPage) => {
     dispatch(booksRequested());
-    bookstoreService.getBooks()
+    bookstoreService.getBooks(currentPage)
     .then((data) => dispatch(booksLoaded(data)))
     .catch((err) => dispatch(booksError(err)))
 }

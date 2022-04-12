@@ -1,22 +1,27 @@
-import { maxChunck, data, dataCount } from "./mockStore";
+import { data, dataCount } from "./mockStore";
 
 export default class BookstoreService {
     
-    pageItemsCount = maxChunck;
+    itemsPerPage = 4;
     
     booksCount = dataCount;
 
     data = data;
 
 
-    getBooks(){
+    getBooks(currentPage){
+
+        const idxStart = this.itemsPerPage*(currentPage - 1)
+        const idxEnd = idxStart + (this.itemsPerPage - 1)
+
+        const currentData = [...this.data.slice(idxStart, idxEnd + 1)]
 
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if(Math.random() > 0.8){
                    reject(new Error('Something wrong')) 
                 }
-                resolve([this.data, this.booksCount])
+                resolve([currentData, this.booksCount, this.itemsPerPage])
             }, 700);
         }) 
     }

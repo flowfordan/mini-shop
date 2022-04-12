@@ -20,7 +20,8 @@ export const updStock = (state, action) => {
                 books: action.payload[0],
                 isLoading: false,
                 error: null,
-                totalBooksCount: action.payload[1]
+                totalBooksCount: action.payload[1],
+                itemsPerPage: action.payload[2]
             }
 
         case 'FETCH_BOOKS_FAILURE':

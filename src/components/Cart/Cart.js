@@ -32,6 +32,7 @@ const Cart = ({items, total, onAddedToCart, onRemovedfromCart}) => {
         <div className={styles.cart}>
             <div className={styles.title}>Cart</div>
             <table>
+            <thead>
                 <tr className={styles.head}>
                     <th>N</th>
                     <th>Title</th>
@@ -40,6 +41,8 @@ const Cart = ({items, total, onAddedToCart, onRemovedfromCart}) => {
                     <th></th>
                     <th>Total</th>
                 </tr>
+            </thead>
+            <tbody>
                 {itemsList}
                 <tr>
                     <td></td>
@@ -49,6 +52,7 @@ const Cart = ({items, total, onAddedToCart, onRemovedfromCart}) => {
                     <td></td>
                     <td className={styles.total}>{`${total}$`}</td>
                 </tr>
+            </tbody>
             </table>
         </div>
     )

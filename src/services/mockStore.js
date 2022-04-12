@@ -80,8 +80,16 @@ export const data = [{
     author: 'L.N. Tolstoy',
     price: 24,
     coverImage: 'https://s1.livelib.ru/boocover/1000005935/200/e9f3/boocover.jpg',
-    about:'Здравствуйте дорогой Мартин Алексеич! Пишу вам сразу по приезду, прямо вот'}]
+    about:'Здравствуйте дорогой Мартин Алексеич! Пишу вам сразу по приезду, прямо вот'},
+{
+    id: 13,
+    title: 'What I believe',
+    author: 'L.N. Tolstoy',
+    price: 24,
+    coverImage: 'https://s1.livelib.ru/boocover/1000005935/200/e9f3/boocover.jpg',
+    about:'Здравствуйте дорогой Мартин Алексеич! Пишу вам сразу по приезду, прямо вот'}
+
+]
 
 export const dataCount = data.length
 
-export const maxChunck = 4

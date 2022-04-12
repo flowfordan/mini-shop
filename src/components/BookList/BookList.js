@@ -1,21 +1,28 @@
+import { checkPropTypes } from "prop-types";
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import BookListItem from "../BookListItem/BookListItem";
+import Spinner from "../Spinner/Spinner";
 import styles from './BookList.module.css';
 
 
-const BookList = ({books, onAddedToCart, totalBooksCount}) => {
+const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPage, isLoading}) => {
 
-    const itemsOnPage = 4;
-    const pagesCount = Math.ceil(totalBooksCount/itemsOnPage)
+    const pagesCount = Math.ceil(totalBooksCount/itemsPerPage)
+
     const pagesCountArray = Array(pagesCount).fill(1).map((x, y) => x + y)
 
 
+    const onPageChange = (num) => {
+        pageChange(num)
+    }
 
     const pagesLinks = pagesCountArray.map((num) => {
         return(
             <span key={num}>
-                <NavLink to={`${num}`} className={({ isActive })  => isActive ? styles.pageNumActive : styles.pageNum}>{num}</NavLink>    
+                <NavLink to={`${num}`} className={({ isActive })  => isActive ? styles.pageNumActive : styles.pageNum} onClick={() => onPageChange(num)}>
+                    {num}
+                </NavLink>    
             </span>
         )
     })
@@ -29,6 +36,10 @@ const BookList = ({books, onAddedToCart, totalBooksCount}) => {
             </li>
         )
     })
+
+    if(isLoading){
+        return <Spinner />
+    }
 
     return(
         <>
