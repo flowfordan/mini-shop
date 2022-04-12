@@ -1,6 +1,6 @@
 .layout {
     display: grid;
-    grid-template-columns: auto minmax(320px, 900px) minmax(400px, 600px) auto;
+    grid-template-columns: auto minmax(420px, 900px) minmax(400px, 600px) auto;
     grid-template-rows: auto;
     column-gap: 20px;
     grid-template-areas: 
@@ -9,6 +9,7 @@
 }
 
 .books {
+    padding: 30px;
     grid-area: books;
     background-color: var(--white);
     border-radius: 5px;

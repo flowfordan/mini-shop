@@ -1,0 +1,35 @@
+
+.title {
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 700;
+}
+
+.listFooter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.listHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pages {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--grey-main)
+}
+
+.pageNum, .pageNumActive  {
+    padding: 0 5px;
+}
+
+.pageNum:hover  {
+    color: var(--grey-dark);
+}
+
+.pageNumActive {
+    color: var(--black);
+}
