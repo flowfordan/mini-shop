@@ -8,10 +8,17 @@ import styles from './BookList.module.css';
 
 const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPage, isLoading}) => {
 
-    const pagesCount = Math.ceil(totalBooksCount/itemsPerPage)
+    let pagesCount
+    let pagesCountArray
 
-    const pagesCountArray = Array(pagesCount).fill(1).map((x, y) => x + y)
-
+    if(!totalBooksCount){
+        pagesCount = 0
+        pagesCountArray = []
+    }else {
+        pagesCount = Math.ceil(totalBooksCount/itemsPerPage)
+        pagesCountArray = Array(pagesCount).fill(1).map((x, y) => x + y)
+    }
+    
 
     const onPageChange = (num) => {
         pageChange(num)
@@ -20,7 +27,7 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
     const pagesLinks = pagesCountArray.map((num) => {
         return(
             <span key={num}>
-                <NavLink to={`${num}`} className={({ isActive })  => isActive ? styles.pageNumActive : styles.pageNum} onClick={() => onPageChange(num)}>
+                <NavLink to={`/page/${num}`} className={({ isActive })  => isActive ? styles.pageNumActive : styles.pageNum} onClick={() => onPageChange(num)}>
                     {num}
                 </NavLink>    
             </span>
@@ -37,23 +44,26 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
         )
     })
 
-    if(isLoading){
-        return <Spinner />
-    }
+
+
+    const spinnerLoader = isLoading? <Spinner /> : null;
+    const dataLoaded = isLoading? null : <ul>{itemsToRender}</ul>;
 
     return(
         <>
-        <div className={styles.listHeader}>
-            <span className={styles.title}>Books</span>
-            <span className={styles.pages}>{pagesLinks}</span>
-        </div>
-            <ul>
-                {itemsToRender}
-            </ul>
-            <div className={styles.listFooter}>
+            <div className={styles.listHeader}>
+                <span className={styles.title}>Books</span>
+                <span className={styles.pages}>{pagesLinks}</span>
+                
+            </div>
+            {spinnerLoader}
+            {dataLoaded}
             
-            <span className={styles.pages}>{pagesLinks}</span>
-        </div>
+            
+
+            <div className={styles.listFooter}>
+                <span className={styles.pages}>{pagesLinks}</span>
+            </div>
         </>
     )
 }

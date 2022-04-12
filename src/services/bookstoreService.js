@@ -18,7 +18,7 @@ export default class BookstoreService {
 
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if(Math.random() > 0.8){
+                if(Math.random() > 0.9){
                    reject(new Error('Something wrong')) 
                 }
                 resolve([currentData, this.booksCount, this.itemsPerPage])

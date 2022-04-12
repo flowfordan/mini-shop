@@ -6,43 +6,62 @@ import compose from "../../utils/compose";
 import Spinner from "../Spinner/Spinner";
 import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
 import BookList from './BookList';
+import { useParams, useLocation } from "react-router-dom";
 
 
 const BookListContainer = (props) => {
     
-    //state wt current page
+    const {books, isLoading, error, onAddedToCart, totalBooksCount, itemsPerPage} = props;
+    
+    const {page}  = useParams(); //getting current url for default state
 
+    const [currentPage, setPage] = useState(page);
+    const [gotStatTotal, setStatTotal] = useState(false)
+    const [perPageCount, setPerPageCount] = useState(2)
+    const [booksCount, setCount] = useState(0)
 
     const pageChange = (page) => {
         setPage(page)
-    }
-
-    const [currentPage, setPage] = useState(1)
-
-    useEffect(
-        () => console.log(currentPage),
-        [currentPage])
+    };
 
     useEffect(
         () => props.fetchBooks(currentPage),
     [currentPage])
 
+    //if loaded - set true
+    useEffect(
+        () => {
+            if(totalBooksCount){
+                setStatTotal(true)
+            }
+        },
+    [totalBooksCount])
 
+    //if true is triggered - set params once and for all  (wont update)
+    useEffect(
+        () => {
+            if(gotStatTotal){
+                setCount(totalBooksCount)
+            }
+        },
+    [gotStatTotal])
 
-    const {books, isLoading, error, onAddedToCart, totalBooksCount, itemsPerPage} = props;
+    useEffect(
+        () => {
+            if(gotStatTotal){
+                setPerPageCount(itemsPerPage)
+            }
+        },
+    [gotStatTotal])
 
-
-    if(isLoading){
-        return <Spinner />
-    }
 
     if(error){
         return <ErrorIndicator />
     }
 
     return <BookList books={books} onAddedToCart={onAddedToCart} 
-    totalBooksCount={totalBooksCount} pageChange={pageChange}
-    itemsPerPage={itemsPerPage} isLoading={isLoading}/>
+    totalBooksCount={booksCount} pageChange={pageChange}
+    itemsPerPage={perPageCount} isLoading={isLoading}/>
     
 }
 

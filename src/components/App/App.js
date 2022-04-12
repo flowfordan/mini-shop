@@ -17,7 +17,7 @@ function App() {
     <div className={styles.body}>
       <Routes>
 
-        <Route path="*" element={<HomePage />}/>
+        <Route path="/page/:page" element={<HomePage />}/>
         <Route path="/card" element={<CartPage />}/>
       
       </Routes>
