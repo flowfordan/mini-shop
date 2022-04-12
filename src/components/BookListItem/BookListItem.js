@@ -3,7 +3,7 @@ import styles from './BookListItem.module.css'
 
 const BookListItem = ({book, onAddedToCart}) => {
     
-    const {title, author, price, coverImage} = book
+    const {title, author, price, coverImage, about} = book
 
     return(
         <div className={styles.book}>
@@ -20,7 +20,7 @@ const BookListItem = ({book, onAddedToCart}) => {
                 {author}
             </div>
 
-            <div className={styles.discript}>About</div>
+            <div className={styles.about}>{about}</div>
 
             <div className={styles.price}>{`${price}$`}</div>
 

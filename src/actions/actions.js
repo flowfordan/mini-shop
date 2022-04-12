@@ -1,7 +1,7 @@
-const booksLoaded = (newBooks) => {
+const booksLoaded = ([newBooks, totalBooks]) => {
     return {
         type: 'FETCH_BOOKS_SUCCESS',
-        payload: newBooks
+        payload: [newBooks, totalBooks]
     }
 };
 

@@ -14,9 +14,10 @@ const BookListContainer = (props) => {
 
     useEffect(
         () => props.fetchBooks(),
-        [])
+    [])
 
-    const {books, isLoading, error, onAddedToCart} = props;
+    const {books, isLoading, error, onAddedToCart, totalBooksCount} = props;
+
 
     if(isLoading){
         return <Spinner />
@@ -26,15 +27,16 @@ const BookListContainer = (props) => {
         return <ErrorIndicator />
     }
 
-    return <BookList books={books} onAddedToCart={onAddedToCart}/>
+    return <BookList books={books} onAddedToCart={onAddedToCart} totalBooksCount={totalBooksCount}/>
     
 }
 
-const mapStateToProps = ( {stock: { books, isLoading, error}}) => {
+const mapStateToProps = ( {stock: { books, isLoading, error, totalBooksCount}}) => {
     return {
         books: books,
         isLoading: isLoading,
-        error: error
+        error: error,
+        totalBooksCount: totalBooksCount
     }
 };
 
