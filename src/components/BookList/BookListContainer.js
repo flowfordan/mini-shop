@@ -16,9 +16,10 @@ const BookListContainer = (props) => {
     const {page}  = useParams(); //getting current url for default state
 
     const [currentPage, setPage] = useState(page);
-    const [gotStatTotal, setStatTotal] = useState(false)
-    const [perPageCount, setPerPageCount] = useState(2)
-    const [booksCount, setCount] = useState(0)
+    const [gotStatTotal, setStatTotal] = useState(false);
+    const [perPageCount, setPerPageCount] = useState(2);
+    const [booksCount, setCount] = useState(0);
+    const [currentBooks, setCurrentBooks] = useState([])
 
     const pageChange = (page) => {
         setPage(page)

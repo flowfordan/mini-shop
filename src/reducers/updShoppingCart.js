@@ -37,6 +37,7 @@ const updCartItem = (book, cartItem, quantity) => {
 const updateOrder = (state, bookId, quantity) => {
 
     const {stock: {books}, shoppingCart: {cartItems, orderTotal}} = state;
+    console.log(state)
     const book = books.find(i => i.id === bookId)
     const idx = cartItems.findIndex(i => i.id === bookId);
     const cartItem = cartItems[idx];

@@ -1,6 +1,7 @@
 .cart {
     margin: 30px;
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .cart table {
@@ -8,14 +9,14 @@
     text-align:justify;
 }
 
-.cart button {
+.booksRow button {
     max-width:fit-content;
     font-size: 8;
     background-color: var(--grey-light);
     color: var(--grey-main);
 }
 
-.cart button:hover {
+.booksRow button:hover {
     background-color: var(--grey-light);
     color: var(--white);
 }
@@ -52,3 +53,31 @@
     font-size: 20px;
 }
 
+.table {
+    margin-top: 15px;
+}
+
+.dummy {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 15px;
+    color: var(--grey-dark);
+}
+
+.checkout {
+    margin-top: 10px;
+
+    margin: 0;
+    
+}
+
+.checkout button {
+    background-color: var(--red);
+    width: auto;
+    margin: 0; 
+}
+
+.checkout button:hover {
+    background-color: var(--red-hover);
+}
