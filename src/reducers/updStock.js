@@ -1,16 +1,7 @@
-const saveBooks = (prevBooks, newBooks) => {
-    //[{id}{}]
-    //[{id}{}]
-
-
-}
-
-
 export const updStock = (state, action) => {
     if(state === undefined){
         return {
             books: [],
-            savedBooks: [],
             isLoading: true,
             error: null,
         }
@@ -26,10 +17,8 @@ export const updStock = (state, action) => {
             }
 
         case 'FETCH_BOOKS_SUCCESS':
-            console.log('STATE',state)
             return {
                 books: action.payload[0],
-                savedBooks: action.payload[0],
                 isLoading: false,
                 error: null,
                 totalBooksCount: action.payload[1],
