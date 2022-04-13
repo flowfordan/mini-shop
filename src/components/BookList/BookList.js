@@ -1,14 +1,16 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Route, Routes } from "react-router-dom";
 import BookListItem from "../BookListItem/BookListItem";
 import Spinner from "../Spinner/Spinner";
 import styles from './BookList.module.css';
 
 
-const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPage, isLoading, currentPage}) => {
+const BookList = ({books, onAddedToCart, totalBooksCount, itemsPerPage, isLoading, currentPage}) => {
 
     let pagesCount
     let pagesCountArray
+
+    // const [booksCount, setCount] = setCount(0)
 
     if(!totalBooksCount){
         pagesCount = 0
@@ -32,17 +34,10 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
     }
     
 
-    const onPageChange = (num) => {
-        if(num<1){
-            return
-        }
-        pageChange(num)
-    };
-
     const pagesLinks = pagesCountArray.map((num) => {
         return(
             <span key={num}>
-                <NavLink to={`/page/${num}`} className={({ isActive })  => isActive ? styles.pageNumActive : styles.pageNum} onClick={() => onPageChange(num)}>
+                <NavLink to={`/page/${num}`} className={({ isActive })  => isActive ? styles.pageNumActive : styles.pageNum} >
                     {num}
                 </NavLink>    
             </span>
@@ -62,7 +57,7 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
     const paginator = (
         <>
             <span className={styles.pageNum}>
-                        <Link to={`/page/${currentPage - 1}`} onClick={() => onPageChange(currentPage - 1)}>
+                        <Link to={`/page/${currentPage - 1}`}>
                         {currentPage === 1? '' : `<`}
                         </Link>  
                     </span>
@@ -70,7 +65,7 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
                     {pagesLinks}
 
                     <span className={styles.pageNum}>
-                        <Link to={`/page/${currentPage + 1}`} onClick={() => onPageChange(currentPage + 1)}>
+                        <Link to={`/page/${currentPage + 1}`}>
                             {currentPage === pagesCount? '' : `>`}
                         </Link>
                     </span>
@@ -92,7 +87,8 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
             </div>
 
             {spinnerLoader}
-            {dataLoaded}           
+            {dataLoaded}
+       
 
             <div className={styles.listFooter}>
                 <span className={styles.pages}>

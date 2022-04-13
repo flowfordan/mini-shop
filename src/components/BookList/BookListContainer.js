@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import withBookstoreService from "../HOC/withBookstoreService";
 import { fetchBooks, bookAddedToCart } from "../../actions/actions";
 import compose from "../../utils/compose";
-import Spinner from "../Spinner/Spinner";
 import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
 import BookList from './BookList';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const BookListContainer = (props) => {
@@ -15,15 +14,18 @@ const BookListContainer = (props) => {
     
     const {pageNum}  = useParams(); //getting current url for default state
     const page = parseInt(pageNum)
+    console.log(page)
+    
 
     const [currentPage, setPage] = useState(page);
     const [gotStatTotal, setStatTotal] = useState(false);
     const [perPageCount, setPerPageCount] = useState(2);
     const [booksCount, setCount] = useState(0);
 
-    const pageChange = (page) => {
-        setPage(page)
-    };
+    //setting current page
+    useEffect(
+        () => setPage(page),
+    [page])
 
     useEffect(
         () => props.fetchBooks(currentPage),
@@ -61,7 +63,7 @@ const BookListContainer = (props) => {
     }
 
     return <BookList books={books} onAddedToCart={onAddedToCart} 
-    totalBooksCount={booksCount} pageChange={pageChange}
+    totalBooksCount={booksCount}
     itemsPerPage={perPageCount} isLoading={isLoading}
     currentPage={currentPage}/>
     

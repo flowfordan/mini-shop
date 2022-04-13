@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import styles from './App.module.css';
 import HomePage from "../Pages/HomePage";
 import CartPage from "../Pages/CartPage";
@@ -16,9 +16,10 @@ function App() {
       <div className={styles.body}>
         <Routes>
 
-        <Route path="/page/*" element={<HomePage />}/>
+        <Route path="/*" element={<Navigate replace to='/page/1' />}/>
+        <Route path="/page/*" element={<Navigate replace to='/page/1' />}/>
         <Route path="/page/:pageNum" element={<HomePage />}/>
-        <Route path="/cart" element={<CartPage />}/>
+        <Route path="*" element={<div>404</div>} />
         
         </Routes>
       </div>

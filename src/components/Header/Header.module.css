@@ -12,7 +12,17 @@
 
 .logo {
     grid-area: logo;
-    
+    color: var(--grey-dark);
+    background-color: var(--secondary);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary);
+    font-weight: 500;
+    font-size: 20px;  
+}
+
+.logo:hover {
+    border-color: var(--grey-main);
 }
 
 .cartInfo {

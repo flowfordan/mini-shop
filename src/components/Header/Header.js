@@ -1,5 +1,6 @@
 import React from "react";
-import styles from './Header.module.css'
+import styles from './Header.module.css';
+import { NavLink, Link, Route, Routes } from "react-router-dom";
 
 const Header = () => {
     
@@ -7,8 +8,20 @@ const Header = () => {
 
     return(
         <header className={styles.header}>
-            <span className={styles.logo}>Header-logo</span>
+
+            <NavLink to="/page/1"> 
+                
+                <span className={styles.logo}>
+
+                miniStore
+            
+            </span>
+            </NavLink>
+            
+           
+
             <span className={styles.cartInfo}>Cart-info</span>
+
         </header>
     )
 }
