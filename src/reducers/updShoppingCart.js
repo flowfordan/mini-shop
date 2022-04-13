@@ -1,3 +1,9 @@
+const roundPrice = (initPrice) => {
+    return Number((initPrice).toFixed(2))
+}
+
+
+
 const updCartItems = (cartItems, item, idx) => {
 
     if (item.count === 0){
@@ -24,13 +30,15 @@ const updCartItem = (book, cartItem, quantity) => {
     
     if(cartItem){
         return {
-            ...cartItem, 
+            ...cartItem,
             count: cartItem.count + quantity, 
-            total: cartItem.total + quantity*cartItem.price} 
+            total: roundPrice(cartItem.total + quantity*cartItem.price)
+            } 
     }
     else {
         const {id, title, price} = book
-        return {id, title, price, count: 1, total: price}
+        const cartTitle = `${title.slice(0,30)}...`;
+        return {id, title: cartTitle, price, count: 1, total: price}
     }
 };
 
@@ -44,7 +52,7 @@ const updateOrder = (state, bookId, quantity) => {
 
     return {
         cartItems: updCartItems(cartItems, newItem, idx),
-        orderTotal: orderTotal + quantity*newItem.price
+        orderTotal: roundPrice(orderTotal + quantity*newItem.price)
     }
 };
 

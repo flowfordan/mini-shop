@@ -2,7 +2,7 @@ import { data, dataCount } from "./mockStore";
 
 export default class BookstoreService {
     
-    itemsPerPage = 4;
+    itemsPerPage = 3;
     
     booksCount = dataCount;
 
