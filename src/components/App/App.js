@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import withBookstoreService from "../HOC/withBookstoreService";
 import styles from './App.module.css';
 import HomePage from "../Pages/HomePage";
 import CartPage from "../Pages/CartPage";
@@ -12,22 +11,20 @@ function App() {
   return (
     
     <div className={styles.wrapper}>
-    <Header className={styles.header} />
+      <Header className={styles.header} />
 
-    <div className={styles.body}>
-      <Routes>
+      <div className={styles.body}>
+        <Routes>
 
-        <Route path="/page/:pageNum" element={<HomePage />}/>
-        <Route path="/card" element={<CartPage />}/>
-      
-      </Routes>
+          <Route path="/page/:pageNum" element={<HomePage />}/>
+          <Route path="/cart" element={<CartPage />}/>
+        
+        </Routes>
+      </div>
+
+      <Footer className={styles.footer} />
+
     </div>
-
-    <Footer className={styles.footer} />
-
-    </div>
-    
-    
   );
 }
 

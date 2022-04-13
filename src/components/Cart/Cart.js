@@ -1,6 +1,5 @@
 import React from "react";
 import { bookAddedToCart, bookRemovedfromCart } from "../../actions/actions";
-
 import styles from './Cart.module.css';
 import { connect } from "react-redux";
 
@@ -65,9 +64,7 @@ const Cart = ({items, total, onAddedToCart, onRemovedfromCart}) => {
                         <td className={styles.checkout}><button >Checkout</button></td>
                     </tr>
                 </tbody>
-            </table>
-            
-            
+            </table> 
             </>
         )
     

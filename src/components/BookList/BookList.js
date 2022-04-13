@@ -1,4 +1,3 @@
-import { checkPropTypes } from "prop-types";
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import BookListItem from "../BookListItem/BookListItem";
@@ -16,7 +15,20 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
         pagesCountArray = []
     }else {
         pagesCount = Math.ceil(totalBooksCount/itemsPerPage)
-        pagesCountArray = Array(pagesCount).fill(1).map((x, y) => x + y)
+        pagesCountArray = Array(pagesCount).fill(1).map((x, y) => x + y);
+        if(pagesCountArray.length > 5){
+            switch (currentPage) {
+                case 1:
+                    pagesCountArray = [currentPage, currentPage + 1];
+                    break
+                case pagesCount:
+                    pagesCountArray = [currentPage - 1, currentPage]
+                    break
+                default:
+                    pagesCountArray = [currentPage - 1, currentPage, currentPage + 1]
+            }
+            
+        }
     }
     
 
@@ -51,7 +63,7 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
         <>
             <span className={styles.pageNum}>
                         <Link to={`/page/${currentPage - 1}`} onClick={() => onPageChange(currentPage - 1)}>
-                            {`<`}
+                        {currentPage === 1? '' : `<`}
                         </Link>  
                     </span>
 
@@ -59,7 +71,7 @@ const BookList = ({books, onAddedToCart, totalBooksCount, pageChange, itemsPerPa
 
                     <span className={styles.pageNum}>
                         <Link to={`/page/${currentPage + 1}`} onClick={() => onPageChange(currentPage + 1)}>
-                            {`>`}
+                            {currentPage === pagesCount? '' : `>`}
                         </Link>
                     </span>
         </>
