@@ -9,18 +9,13 @@ const Header = () => {
     return(
         <header className={styles.header}>
 
-            <NavLink to="/page/1"> 
+            
                 
                 <span className={styles.logo}>
-
+                <NavLink to="/page/1"> 
                 miniStore
-            
-            </span>
-            </NavLink>
-            
-           
-
-            <span className={styles.cartInfo}>Cart-info</span>
+                </NavLink>
+                </span>
 
         </header>
     )

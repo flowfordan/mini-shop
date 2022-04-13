@@ -15,12 +15,9 @@ function App() {
 
       <div className={styles.body}>
         <Routes>
-
-        <Route path="/*" element={<Navigate replace to='/page/1' />}/>
-        <Route path="/page/*" element={<Navigate replace to='/page/1' />}/>
-        <Route path="/page/:pageNum" element={<HomePage />}/>
-        <Route path="*" element={<div>404</div>} />
-        
+          <Route path="/*" element={<Navigate replace to='/page/1' />}/>
+          <Route path="/page/*" element={<Navigate replace to='/page/1' />}/>
+          <Route path="/page/:pageNum" element={<HomePage />}/>
         </Routes>
       </div>
 

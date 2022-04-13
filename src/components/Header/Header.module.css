@@ -3,18 +3,18 @@
     background-color: var(--primary);
     border-bottom: 1px solid var(--grey-main);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr ;
     grid-template-areas: 
-    "logo cartInfo .";
+    "logo .";
     column-gap: 20px;
-    padding: 15px;
+    padding: 10px;
 }
 
 .logo {
     grid-area: logo;
     color: var(--grey-dark);
     background-color: var(--secondary);
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid var(--secondary);
     font-weight: 500;
