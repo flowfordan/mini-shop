@@ -26,10 +26,12 @@ ul {
 
 :root {
 	--black: #2F4858;
+
 	--grey-light:#EBEBEB;
 	--grey-main:#c2c9e4;
 	--grey-dark:#888da0;
 	--white: white;
+
 	--primary: #E5FF80;
 	--primary-hover: #D4EC78;
 
@@ -38,6 +40,7 @@ ul {
 
 	--red: #FFC99C;
 	--red-hover: #F49268;
+	
 	--font-family: 'Noto Sans KR', sans-serif;
 }
 
