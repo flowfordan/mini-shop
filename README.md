@@ -1,13 +1,14 @@
 # miniShop
 
-Small React-Redux app project
+Small React-Redux app project example - mock online bookstore with features like add to cart, increase number of items in the cart, delete from the cart, decrease number of items from the cart 
+
 
 ## Main Stack
 
 ### Base
 HTML, JS, React
 
-### App State
+### State Management
 Redux, React-Redux
 
 ### Routing
