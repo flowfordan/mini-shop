@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import styles from './App.module.css';
 import HomePage from "../Pages/HomePage";
 import CartPage from "../Pages/CartPage";

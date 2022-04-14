@@ -25,7 +25,7 @@ root.render(
   <Provider store={store}>
     <ErrorBoundary>
       <BookstoreServiceProvider value={bookstoreService}>
-        <BrowserRouter>
+        <BrowserRouter basename="/mini-shop">
           <App />
         </BrowserRouter>
       </BookstoreServiceProvider>
